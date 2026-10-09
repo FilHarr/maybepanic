@@ -76,12 +76,15 @@ def addon_info(addon_xml):
     return root.get('id'), root.get('version')
 
 
-def build(files):
+def build(files, require_id=None):
     files = sorted(files)
     addon_xml = dict(files).get('addon.xml')
     if addon_xml is None:
         raise SystemExit('  no addon.xml')
     addon_id, version = addon_info(addon_xml)
+    if require_id and addon_id != require_id:
+        # e.g. a commit from before the rename: published here, it would shadow the stock add-on
+        raise SystemExit('  addon.xml says {}, not {}'.format(addon_id, require_id))
     target = os.path.join(ZIPS, addon_id, '{}-{}.zip'.format(addon_id, version))
 
     if os.path.exists(target):
@@ -160,7 +163,7 @@ def main():
             build(folder_files(folder))
     if args.uno:
         print(os.path.basename(os.path.normpath(args.uno)))
-        build(git_files(args.uno))
+        build(git_files(args.uno), require_id='script.plexmod-uno')
     write_index()
 
 
