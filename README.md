@@ -18,9 +18,12 @@ the Inter 4 fonts and a wrapping notification layout.
 
 In Kodi:
 
-1. *Settings → File manager → Add source*: `https://pm4k.daftegg.uk`, named e.g. *maybepanic*
-2. *Add-ons → Install from zip file → maybepanic*: the `repository.maybepanic` zip
-3. *Add-ons → Install from repository → Maybe Panic*: Plex Uno and the Plextuary Uno skin for the device
+1. *Settings → System → Add-ons*: turn on *Unknown sources*
+2. *Settings → File manager → Add source*: select *&lt;None&gt;*, enter `https://pm4k.daftegg.uk`, OK, name it
+   *maybepanic*, OK
+3. *Add-ons → Add-on browser* (the open box icon) *→ Install from zip file → maybepanic*: the `repository.maybepanic`
+   zip
+4. *Add-on browser → Install from repository → Maybe Panic*: Plex Uno and the Plextuary Uno skin for the device
 
 Or download the repository zip from [pm4k.daftegg.uk](https://pm4k.daftegg.uk) and install it from a local folder.
 Plex Uno and the skins then update from the repository.
