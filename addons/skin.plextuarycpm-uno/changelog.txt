@@ -1,0 +1,91 @@
+[B]4.0.0-pm4k1.15cpm.a14.26[/B]
+* Fonts: add font8 (18pt, lighten) to every fontset - smaller than font10 (23pt), without the bold weight of font_flag, for compact info pills on the pre-play screen
+
+[B]4.0.0-pm4k1.15cpm.a14.25[/B]
+* PlayerProcessInfo: new video-output line (pixel format + Player-Led DV/HDR10/LLDV signal type)
+* PlayerProcessInfo: fix audio channel layouts (correct LFE placement, drop bogus 9.1/10-channel mappings, Mono -> 1.0)
+* PlayerProcessInfo: scroll long subtitle names
+* PlayerProcessInfo: fix missing space before the "|" in the VP/VS10 mode line (overlapped the green indicator)
+
+[B]4.0.0-pm4k1.15cpm.a14.24[/B]
+* PlayerProcessInfo: fix missing "|" separators between fields (the separator variable was never carried over from the p3i.estuary port)
+
+[B]4.0.0-pm4k1.15cpm.a14.23[/B]
+* Codec logos: dark variant with a "Dark codec logos" setting (default on); aligned the codec art/naming with p3i.estuary (file-preset light/dark, no more colordiffuse)
+* Codec logos: ProRes video badge
+* PlayerProcessInfo: show the CMv4.0 -> CMv2.9 down-convert state in DV Metadata
+* PlayerProcessInfo: smaller text (font10)
+* Fix overlapping media flags on music videos
+
+[B]4.0.0-pm4k1.15cpm.a14.22[/B]
+* Codec logos: also keep the startup logos ("Show codec logos when video starts") inside the DV active area (a14.21 only moved the OSD/PlayerProcessInfo ones)
+
+[B]4.0.0-pm4k1.15cpm.a14.21[/B]
+* Codec logos: option to keep them inside the DV active area (off the letterbox bars), default on (requires the corresponding p3i build for the active-area info)
+
+[B]4.0.0-pm4k1.15cpm.a14.20[/B]
+* Codec logos: show during the PM4K OSD, not just the Kodi seekbar (react to script.plex.osd_active)
+* Codec logos: fix the brief flicker when closing the PlayerProcessInfo (gate the OSD copy on PPI visibility)
+
+[B]4.0.0-pm4k1.15cpm.a14.19[/B]
+* Codec logos: fix OSD/pause logos not showing (restored tolerant vs10.mode matching + SDR bit-depth fallback; a14.18 was too strict for the persistent OSD)
+* Codec logos: removed the separator line between the video and audio logos
+* PlayerProcessInfo: re-added the codec-logo option (reuses the OSD logos, same placement as the startup logos), with the position setting back
+* Codec logos: fixed the brief flicker when closing the PlayerProcessInfo
+
+[B]4.0.0-pm4k1.15cpm.a14.18[/B]
+* Codec logos: full p3i.estuary video badge set (SDR 8/10-bit, HDR10, HDR10+, Dolby Vision, DV-FEL, HLG, and VS10-conversion badges) instead of the single SDR badge + green dot
+* Codec logos: removed the floating green VS10 dot and the orphaned PlayerProcessInfo codec-logo setting (the p3i PPI shows codecs as text)
+
+[B]4.0.0-pm4k1.15cpm.a14[/B]
+* PlayerProcessInfo: adopt p3i.estuary's newer DV/HDR/audio layout (and its variables)
+* Re-align skin strings into the Kodi-legal 31000-31999 range
+* Codec logos: p3i.estuary art, no background card, full-opacity colour (PM4K trigger framework unchanged)
+
+[B]4.0.0-pm4k1.3cpm.a14[/B]
+* Adapt to CoreELEC Estuary CPM A14
+
+[B]0.8.5[/B]
+• Updated language files from Transifex
+
+[B]0.8.3[/B]
+• Updated language files from Transifex
+
+[B]0.8.2[/B]
+• Updated language files from Transifex
+
+[B]0.8.1[/B]
+• Updated language files from Transifex
+
+[B]0.7.13[/B]
+• Updated language files from Transifex
+
+[B]0.7.12[/B]
+• Updated language files from Transifex
+
+[B]0.7.11[/B]
+• Updated language files from Transifex
+
+[B]0.7.10[/B]
+• Updated language files from Transifex
+
+[B]0.7.8[/B]
+• Updated language files from Transifex
+
+[B]0.7.7[/B]
+• Updated language files from Transifex
+
+[B]0.7.3[/B]
+• Updated language files from Transifex
+
+[B]0.7.1[/B]
+• Updated language files from Transifex
+
+[B]0.6.2[/B]
+• Updated language files from Transifex
+
+[B]0.6.1[/B]
+• Updated language files from Transifex
+
+﻿[B]0.0.1[/B]
+• Initial commit

@@ -1,0 +1,1606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="CodecLogosLeftOSD">
+        <control type="group">
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <animation effect="slide" end="0,60" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),1)">Conditional</animation>
+            <animation effect="slide" end="0,104" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),2)">Conditional</animation>
+            <animation effect="slide" end="0,138" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),3)">Conditional</animation>
+            <left>35</left>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),0) + !String.IsEqual(Player.Process(video.bit.depth),10) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr8.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),0) + String.IsEqual(Player.Process(video.bit.depth),10) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr10.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),1) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10plus.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + !String.IsEqual(Player.Process(video.dovi.el.type),full)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + String.IsEqual(Player.Process(video.dovi.el.type),full)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_fel.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),4) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hlg.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.Contains(Player.Process(amlogic.vs10.mode),SDR)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.Contains(Player.Process(amlogic.vs10.mode),HDR10)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + !Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_conv.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,pcm) | String.IsEqual(VideoPlayer.AudioCodec,pcm_bluray) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s16le) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s24le)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]pcm.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,aac) | String.IsEqual(VideoPlayer.AudioCodec,aac_latm) | String.IsEqual(VideoPlayer.AudioCodec,aac_lc) | String.IsEqual(VideoPlayer.AudioCodec,he_aac) | String.IsEqual(VideoPlayer.AudioCodec,he_aac_v2) | String.IsEqual(VideoPlayer.AudioCodec,aac_ssr) | String.IsEqual(VideoPlayer.AudioCodec,aac_ltp)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]aac.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dolbydigital) | String.IsEqual(VideoPlayer.AudioCodec,ac3)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]ac3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,eac3)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]eac3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]truehd_atmos.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,truehd)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]truehd.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]eac3_ddp_atmos.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,mp3) | String.IsEqual(VideoPlayer.AudioCodec,mp3float)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]mp3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dca)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dca.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_hra.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma_x.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma_x_imax.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,flac)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]flac.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,opus)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]opus.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="CodecLogosCenterOSD">
+        <control type="group">
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <animation effect="slide" end="0,60" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),1)">Conditional</animation>
+            <animation effect="slide" end="0,104" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),2)">Conditional</animation>
+            <animation effect="slide" end="0,138" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),3)">Conditional</animation>
+            <left>855</left>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),0) + !String.IsEqual(Player.Process(video.bit.depth),10) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr8.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),0) + String.IsEqual(Player.Process(video.bit.depth),10) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr10.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),1) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10plus.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + !String.IsEqual(Player.Process(video.dovi.el.type),full)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + String.IsEqual(Player.Process(video.dovi.el.type),full)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_fel.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),4) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hlg.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.Contains(Player.Process(amlogic.vs10.mode),SDR)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.Contains(Player.Process(amlogic.vs10.mode),HDR10)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + !Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_conv.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,pcm) | String.IsEqual(VideoPlayer.AudioCodec,pcm_bluray) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s16le) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s24le)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]pcm.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,aac) | String.IsEqual(VideoPlayer.AudioCodec,aac_latm) | String.IsEqual(VideoPlayer.AudioCodec,aac_lc) | String.IsEqual(VideoPlayer.AudioCodec,he_aac) | String.IsEqual(VideoPlayer.AudioCodec,he_aac_v2) | String.IsEqual(VideoPlayer.AudioCodec,aac_ssr) | String.IsEqual(VideoPlayer.AudioCodec,aac_ltp)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]aac.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dolbydigital) | String.IsEqual(VideoPlayer.AudioCodec,ac3)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]ac3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,eac3)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]eac3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]truehd_atmos.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,truehd)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]truehd.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]eac3_ddp_atmos.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,mp3) | String.IsEqual(VideoPlayer.AudioCodec,mp3float)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]mp3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dca)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dca.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_hra.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma_x.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma_x_imax.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,flac)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]flac.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,opus)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]opus.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="CodecLogosRightOSD">
+        <control type="group">
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <animation effect="slide" end="0,60" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),1)">Conditional</animation>
+            <animation effect="slide" end="0,104" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),2)">Conditional</animation>
+            <animation effect="slide" end="0,138" time="0" condition="[ !Skin.HasSetting(osd.codeclogosactiveareaoff) | System.GetBool(coreelec.amlogic.dolbyvision.restrict.subs.active.area) ] + String.IsEqual(Player.Process(video.dovi.active.area.class),3)">Conditional</animation>
+            <left>1675</left>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),0) + !String.IsEqual(Player.Process(video.bit.depth),10) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr8.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),0) + String.IsEqual(Player.Process(video.bit.depth),10) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr10.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),1) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10plus.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + !String.IsEqual(Player.Process(video.dovi.el.type),full)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + String.IsEqual(Player.Process(video.dovi.el.type),full)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_fel.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),4) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hlg.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.Contains(Player.Process(amlogic.vs10.mode),SDR)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]sdr_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.Contains(Player.Process(amlogic.vs10.mode),HDR10)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]hdr10_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!Integer.IsEqual(Player.Process(video.source.hdr.type.raw),3) + !Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_vs.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Integer.IsEqual(Player.Process(video.source.hdr.type.raw),2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+                <top>50</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dolby_vision_conv.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,pcm) | String.IsEqual(VideoPlayer.AudioCodec,pcm_bluray) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s16le) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s24le)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]pcm.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,aac) | String.IsEqual(VideoPlayer.AudioCodec,aac_latm) | String.IsEqual(VideoPlayer.AudioCodec,aac_lc) | String.IsEqual(VideoPlayer.AudioCodec,he_aac) | String.IsEqual(VideoPlayer.AudioCodec,he_aac_v2) | String.IsEqual(VideoPlayer.AudioCodec,aac_ssr) | String.IsEqual(VideoPlayer.AudioCodec,aac_ltp)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]aac.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dolbydigital) | String.IsEqual(VideoPlayer.AudioCodec,ac3)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]ac3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,eac3)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]eac3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]truehd_atmos.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,truehd)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]truehd.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]eac3_ddp_atmos.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,mp3) | String.IsEqual(VideoPlayer.AudioCodec,mp3float)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]mp3.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dca)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dca.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_hra.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma_x.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]dtshd_ma_x_imax.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,flac)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]flac.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(VideoPlayer.AudioCodec,opus)</visible>
+                <top>152</top>
+                <left>30</left>
+                <control type="image">
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$VAR[CodecLogoColorVar]opus.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="Video_Audio_Background_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>35</top>
+                    <width>210</width>
+                    <height>170</height>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Video_Background_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>35</top>
+                    <width>210</width>
+                    <height>90</height>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Audio_Background_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>120</top>
+                    <width>210</width>
+                    <height>90</height>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="SDR_Bypass_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="HDR10_Bypass_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="HDR10Plus_Bypass_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="DV_Bypass_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="HLG_Bypass_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="VS10_Indicator_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>43</top>
+                    <left>192</left>
+                    <width>8</width>
+                    <height>8</height>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="VS10_SDR_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="VS10_HDR10_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="VS10_HDR10Plus_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="VS10_DV_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="VS10_HLG_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>50</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Separation_Line_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>140</top>
+                    <left>15</left>
+                    <width>180</width>
+                    <height>1.5</height>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="PCM_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="AAC_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Dolby_Digital_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Dolby_Digital_Plus_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Dolby_Atmos_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Dolby_TrueHD_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="Dolby_Atmos1_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="MP3_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="DTS_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="DTS_HD_MA_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="DTS_HD_HRA_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="DTS_X_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="IMAX_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="FLAC_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+	
+    <include name="OPUS_Flag">
+        <param name="groupId" />
+        <param name="imageId" />
+        <param name="visible" />
+        <param name="texture" />
+        <param name="colordiffuse" />
+        <definition>
+            <control type="group" id="$PARAM[groupId]">
+                <control type="image" id="$PARAM[imageId]">
+                    <top>152</top>
+                    <left>30</left>
+                    <width>144</width>
+                    <height>80</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <visible>$PARAM[visible]</visible>
+                    <texture>$VAR[CodecLogoColorVar]$PARAM[texture]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="CodecLogoFadeDefault">
+        <definition>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_slowest)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="8000" time="500" tween="sine" />
+            </animation>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_slower)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="6000" time="500" tween="sine" />
+            </animation>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_slow)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="4500" time="500" tween="sine" />
+            </animation>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_default)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="3000" time="500" tween="sine" />
+            </animation>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_fast)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="1500" time="500" tween="sine" />
+            </animation>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_faster)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="1000" time="500" tween="sine" />
+            </animation>
+            <animation type="WindowOpen" condition="Skin.HasSetting(codecld_fastest)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="500" time="500" tween="sine" />
+            </animation>
+            <!-- default -->
+            <animation type="WindowOpen" condition="!Skin.HasSetting(codecld_fastest) + !Skin.HasSetting(codecld_faster) + !Skin.HasSetting(codecld_fast) + !Skin.HasSetting(codecld_default) + !Skin.HasSetting(codecld_slow) + !Skin.HasSetting(codecld_slower) + !Skin.HasSetting(codecld_slowest)">
+                <effect type="fade" start="0" end="100" time="300" />
+                <effect type="fade" start="100" end="0" delay="3000" time="500" tween="sine" />
+            </animation>
+        </definition>
+    </include>
+    <include name="CodecLogoFade">
+        <definition>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_slowest)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_slowest)">
+                <effect type="fade" start="100" end="0" delay="8000" time="500" tween="sine" />
+            </animation>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_slower)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_slower)">
+                <effect type="fade" start="100" end="0" delay="6000" time="500" tween="sine" />
+            </animation>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_slow)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_slow)">
+                <effect type="fade" start="100" end="0" delay="4500" time="500" tween="sine" />
+            </animation>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_default)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_default)">
+                <effect type="fade" start="100" end="0" delay="3000" time="500" tween="sine" />
+            </animation>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_fast)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_fast)">
+                <effect type="fade" start="100" end="0" delay="1500" time="500" tween="sine" />
+            </animation>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_faster)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_faster)">
+                <effect type="fade" start="100" end="0" delay="1000" time="500" tween="sine" />
+            </animation>
+            <animation type="Visible" condition="Skin.HasSetting(codecld_fastest)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="Skin.HasSetting(codecld_fastest)">
+                <effect type="fade" start="100" end="0" delay="500" time="500" tween="sine" />
+            </animation>
+            <!-- default -->
+            <animation type="Visible" condition="!Skin.HasSetting(codecld_fastest) + !Skin.HasSetting(codecld_faster) + !Skin.HasSetting(codecld_fast) + !Skin.HasSetting(codecld_default) + !Skin.HasSetting(codecld_slow) + !Skin.HasSetting(codecld_slower) + !Skin.HasSetting(codecld_slowest)">
+                <effect type="fade" start="0" end="100" time="300" reversible="false" />
+            </animation>
+            <animation type="Hidden" condition="!Skin.HasSetting(codecld_fastest) + !Skin.HasSetting(codecld_faster) + !Skin.HasSetting(codecld_fast) + !Skin.HasSetting(codecld_default) + !Skin.HasSetting(codecld_slow) + !Skin.HasSetting(codecld_slower) + !Skin.HasSetting(codecld_slowest)">
+                <effect type="fade" start="100" end="0" delay="3000" time="500" tween="sine" />
+            </animation>
+        </definition>
+    </include>
+</includes>
