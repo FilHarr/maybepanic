@@ -16,9 +16,14 @@ the Inter 4 fonts and a wrapping notification layout.
 
 ## Installing
 
-Download [`zips/repository.maybepanic/repository.maybepanic-0.2.0.zip`](zips/repository.maybepanic/repository.maybepanic-0.2.0.zip),
-then in Kodi: *Add-ons → Install from zip file*. Plex Uno and the skins then install from *Install from repository →
-Maybe Panic*, and update from there.
+In Kodi:
+
+1. *Settings → File manager → Add source*: `https://pm4k.daftegg.uk`, named e.g. *maybepanic*
+2. *Add-ons → Install from zip file → maybepanic*: the `repository.maybepanic` zip
+3. *Add-ons → Install from repository → Maybe Panic*: Plex Uno and the Plextuary Uno skin for the device
+
+Or download the repository zip from [pm4k.daftegg.uk](https://pm4k.daftegg.uk) and install it from a local folder.
+Plex Uno and the skins then update from the repository.
 
 ## Publishing
 
@@ -27,7 +32,8 @@ python build.py --uno <path to the script.plexmod-uno checkout>
 git add -A && git commit && git push
 ```
 
-`build.py` zips `addons/*` and Plex Uno's committed `HEAD` into `zips/`, and rewrites `zips/addons.xml` and its `.md5`.
+`build.py` zips `addons/*` and Plex Uno's committed `HEAD` into `zips/`, rewrites `zips/addons.xml` and its `.md5`, and puts
+the newest repository zip and an `index.html` linking it at the root, which GitHub Pages serves (see `CNAME`).
 A version that's already published is never rebuilt, so bump an add-on's version in its `addon.xml` before publishing
 a change to it. Older versions stay listed (Kodi can roll back to them) until their zips are deleted.
 

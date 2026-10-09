@@ -151,6 +151,45 @@ def write_index():
     print('addons.xml: {} entries'.format(len(entries)))
 
 
+REPO_ID = 'repository.maybepanic'
+PAGE = '''<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maybe Panic</title>
+<style>
+body {{ margin: 0; padding: 48px 16px; background: #1a232d; color: #e6e9ec; font: 16px/1.5 sans-serif; text-align: center; }}
+a {{ display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 6px; background: #e5a00d; color: #1a232d; font-weight: bold; text-decoration: none; }}
+</style>
+</head>
+<body>
+<h1>Maybe Panic</h1>
+<p>Kodi 21+ repository for Plex Uno and the Plextuary Uno skins</p>
+<a href="{zip}">{zip}</a>
+</body>
+</html>
+'''
+
+
+def write_site():
+    """
+    The GitHub Pages root: the newest repository zip, and a page linking it. Added as a file source in Kodi,
+    the page lists the zip for "Install from zip file", as pm4k.eu does for Don't Panic.
+    """
+    folder = os.path.join(ZIPS, REPO_ID)
+    newest = max((n for n in os.listdir(folder) if n.endswith('.zip')),
+                 key=lambda n: version_key(n[len(REPO_ID) + 1:-4]))
+    for name in os.listdir(ROOT):
+        if name.startswith(REPO_ID + '-') and name.endswith('.zip') and name != newest:
+            os.remove(os.path.join(ROOT, name))
+    with open(os.path.join(folder, newest), 'rb') as src, open(os.path.join(ROOT, newest), 'wb') as dst:
+        dst.write(src.read())
+    with open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write(PAGE.format(zip=newest))
+    print('index.html: {}'.format(newest))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--uno', metavar='PATH', help="Plex Uno's git checkout (script.plexmod-uno)")
@@ -166,6 +205,7 @@ def main():
         print(os.path.basename(os.path.normpath(args.uno)))
         build(git_files(args.uno), require_id='script.plexmod-uno')
     write_index()
+    write_site()
 
 
 if __name__ == '__main__':
