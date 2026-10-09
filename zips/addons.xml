@@ -20,7 +20,7 @@
     </extension>
 </addon>
 
-<addon id="skin.plextuary-uno" version="4.0.0-pm4k1.13" name="Plextuary Uno" provider-name="phil65, pannal, Ichabod Fletchman">
+<addon id="skin.plextuary-uno" version="0.1.0" name="Plextuary Uno" provider-name="phil65, pannal, Ichabod Fletchman">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>
 	</requires>
@@ -207,7 +207,7 @@
 	</extension>
 </addon>
 
-<addon id="skin.plextuaryce-uno" version="4.0.0-pm4k1.15ce" name="Plextuary CoreELEC Uno" provider-name="phil65, pannal, Ichabod Fletchman">
+<addon id="skin.plextuaryce-uno" version="0.1.0" name="Plextuary CoreELEC Uno" provider-name="phil65, pannal, Ichabod Fletchman">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>
 	</requires>
@@ -394,7 +394,7 @@
 	</extension>
 </addon>
 
-<addon id="skin.plextuarycpm-uno" version="4.0.0-pm4k1.15cpm.a14.26" name="Plextuary CE Custom Builds Uno" provider-name="phil65, pannal, Ichabod Fletchman">
+<addon id="skin.plextuarycpm-uno" version="0.1.0" name="Plextuary CE Custom Builds Uno" provider-name="phil65, pannal, Ichabod Fletchman">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>
 	</requires>
