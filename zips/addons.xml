@@ -20,6 +20,58 @@
     </extension>
 </addon>
 
+<addon id="script.plexmod-uno"
+       name="Plex Uno"
+       version="0.1.0"
+       provider-name="pannal, FilHarr">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.27.1+matrix.1"/>
+        <import addon="script.module.six" version="1.15.0+matrix.1"/>
+        <import addon="script.module.kodi-six" version="0.1.3.1" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.python.pluginsource" library="plugin.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.ui.screensaver" library="screensaver.py"/>
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Plex Uno for Kodi</summary>
+        <summary lang="es_ES">Plex Uno para Kodi</summary>
+        <summary lang="de_DE">Plex Uno für Kodi</summary>
+        <description lang="en_GB">Unofficial Plex for Kodi add-on: a reworked fork of PlexMod that installs beside it</description>
+        <description lang="es_ES">Complemento no oficial de Plex para Kodi: una versión reelaborada de PlexMod que se instala junto a él</description>
+        <description lang="de_DE">Inoffizielles Plex-Add-on für Kodi: eine überarbeitete Abspaltung von PlexMod, die sich daneben installieren lässt</description>
+        <disclaimer lang="en">This add-on is not supported by Plex</disclaimer>
+        <disclaimer lang="es">Este add-on no está respaldado por Plex</disclaimer>
+        <disclaimer lang="de">Dieses Addon wird nicht von der Firma Plex Inc. unterstützt</disclaimer>
+
+        <license>GPL-2.0-only</license>
+        <website>https://www.plex.tv</website>
+        <source>https://github.com/FilHarr/plex-for-kodi</source>
+        <platform>all</platform>
+        <news>
+0.1.0 - first Plex Uno build, based on PlexMod 1.14.1. Installs beside the stock add-on.
+- A sidebar replaces the top bar: Home, Search, Watchlist, Playlists and your libraries from any server
+- Libraries: Recommended, Library, Categories and Collections tabs
+- Home: hub rows from every server with hero art; Manage Hubs and a Libraries picker
+- Show, Episodes, Pre-play, Artist, Album, Person, Collections and Playlists screens rebuilt
+- Search across every server, as a sidebar screen
+- Music plays through Plex play queues, with a rebuilt player
+- Multiple servers: offline, back online and gone servers handled
+- Mouse and touch input ignored by default (Settings, System)
+- Needs the Plextuary Uno skin, offered at startup
+        </news>
+        <assets>
+            <icon>icon2.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+    </extension>
+</addon>
+
 <addon id="skin.plextuary-uno" version="0.1.0" name="Plextuary Uno" provider-name="phil65, pannal, Ichabod Fletchman">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>

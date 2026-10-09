@@ -60,7 +60,8 @@ def git_files(checkout):
     head = subprocess.run(['git', '-C', checkout, 'log', '-1', '--format=%h %s'],
                           capture_output=True, text=True, check=True).stdout.strip()
     print('  from {}'.format(head))
-    tar = subprocess.run(['git', '-C', checkout, 'archive', '--format=tar', 'HEAD'],
+    # the files as committed: core.autocrlf=true (Git for Windows' default) would give them CRLF
+    tar = subprocess.run(['git', '-c', 'core.autocrlf=false', '-C', checkout, 'archive', '--format=tar', 'HEAD'],
                          capture_output=True, check=True).stdout
     with tarfile.open(fileobj=io.BytesIO(tar)) as t:
         for member in t.getmembers():
