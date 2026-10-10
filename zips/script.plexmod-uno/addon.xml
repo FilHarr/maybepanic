@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.1.0"
+       version="0.1.1"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,13 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.1.1 - refreshing
+- Refresh Hubs is on every row item's menu and refreshes the rows in place
+- Rows update in place after Remove from Continue Watching and Mark Played
+- Episodes and Seasons update after playback and after the screensaver or sleep
+- New episodes show up without leaving the screen
+- Single-season shows pick up what was watched
+
 0.1.0 - first Plex Uno build, based on PlexMod 1.14.1. Installs beside the stock add-on.
 - A sidebar replaces the top bar: Home, Search, Watchlist, Playlists and your libraries from any server
 - Libraries: Recommended, Library, Categories and Collections tabs
