@@ -1,4 +1,8 @@
-[B]4.0.0-pm4k1.15cpm.a14.26[/B]
+[B]0.1.1[/B]
+* From upstream 4.0.0-pm4k1.15cpm.a14.26-a14.28: keep black-border detection startup progress visible during fullscreen playback and in the information view on supported p3i builds
+* From upstream: show VAR instead of IMAX when DV active-area detection cannot establish consistent framing
+
+[B]0.1.0[/B]
 * Fonts: add font8 (18pt, lighten) to every fontset - smaller than font10 (23pt), without the bold weight of font_flag, for compact info pills on the pre-play screen
 
 [B]4.0.0-pm4k1.15cpm.a14.25[/B]
