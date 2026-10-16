@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.2.0"
+       version="0.2.1"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,11 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.2.1 - Kodi 22
+- Starts on Kodi 22 again
+- Replay after a single movie plays it again
+- Home and Recommended: a show without a clearlogo keeps its name over the episode
+
 0.2.0 - settings
 - Settings reorganised: Playback and Playback (advanced); per-user settings marked
 - More settings apply as soon as Settings closes; ones that did nothing are gone
