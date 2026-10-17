@@ -45,7 +45,8 @@ git add -A && git commit && git push
 ```
 
 `build.py` zips `addons/*` and Plex Uno's committed `HEAD` into `zips/` and `piers/addons/*` into `piers/zips/`,
-rewrites each feed's `addons.xml` and its `.md5`, and puts the newest repository zip and an `index.html` linking it at the root, which GitHub Pages serves (see `CNAME`).
+rewrites each feed's `addons.xml` and its `.md5`, and puts the newest repository zip and an `index.html` linking it at
+the root, which GitHub Pages serves (see `CNAME`).
 A version that's already published is never rebuilt, so bump an add-on's version in its `addon.xml` before publishing
 a change to it. Older versions stay listed (Kodi can roll back to them) until their zips are deleted.
 
