@@ -77,7 +77,7 @@
 		</font>
 		<font>
 			<name>font_clock</name>
-			<filename>Inter.ttf</filename>
+			<filename>Inter-Regular.ttf</filename>
 			<size>70</size>
             <style>lighten</style>
 		</font>

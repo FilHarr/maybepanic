@@ -14,6 +14,15 @@ Plextuary skins:
 The skins are pannal's Plextuary builds from [Don't Panic](https://github.com/pannal/dontpanickodi), plus `font8`,
 the Inter 4 fonts and a wrapping notification layout.
 
+As in Don't Panic, each Kodi version gets its own feed, and the repository add-on picks the right one:
+
+| Kodi | Feed | Skins |
+| --- | --- | --- |
+| 21 (Omega) | `zips/` | all three, 0.1.x |
+| 22 (Piers) | `piers/zips/` | `skin.plextuary-uno` 22.x: Kodi 22's Estuary with Plextuary's changes merged in |
+
+The CoreELEC skins join the Kodi 22 feed once CoreELEC has Kodi 22 builds.
+
 ## Installing
 
 In Kodi:
@@ -35,9 +44,11 @@ python build.py --uno <path to the script.plexmod-uno checkout>
 git add -A && git commit && git push
 ```
 
-`build.py` zips `addons/*` and Plex Uno's committed `HEAD` into `zips/`, rewrites `zips/addons.xml` and its `.md5`, and puts
-the newest repository zip and an `index.html` linking it at the root, which GitHub Pages serves (see `CNAME`).
+`build.py` zips `addons/*` and Plex Uno's committed `HEAD` into `zips/` and `piers/addons/*` into `piers/zips/`,
+rewrites each feed's `addons.xml` and its `.md5`, and puts the newest repository zip and an `index.html` linking it at the root, which GitHub Pages serves (see `CNAME`).
 A version that's already published is never rebuilt, so bump an add-on's version in its `addon.xml` before publishing
 a change to it. Older versions stay listed (Kodi can roll back to them) until their zips are deleted.
 
-`addons/` holds the sources of the skins and the repository add-on. Plex Uno's source lives in its own repository.
+`addons/` holds the sources of the Kodi 21 skins and the repository add-on, `piers/addons/` those of the Kodi 22 skins.
+Plex Uno and the repository add-on are the same in both feeds: `build.py` copies their zips from `zips/` into
+`piers/zips/`. Plex Uno's source lives in its own repository.

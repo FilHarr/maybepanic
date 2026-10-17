@@ -4,9 +4,15 @@ Builds the Maybe Panic repository for Kodi 21+.
 
     python build.py [--uno PATH]
 
-Zips every add-on in addons/, plus Plex Uno from the git checkout at PATH (its committed HEAD, not
-the working tree), into zips/<id>/<id>-<version>.zip, then rewrites zips/addons.xml and its .md5
-from every zip there - so older versions stay listed, and installable, until their zips are deleted.
+One feed per Kodi version, as in Don't Panic: the repository add-on's <dir> entries send Kodi 21 to
+zips/ and Kodi 22 to piers/zips/. Each feed's skins come from its own source folder (addons/ and
+piers/addons/), under the same add-on IDs but their own version lines (Kodi 22's start at 22.0.0).
+
+Zips every add-on in a feed's source folder into its zips/<id>/<id>-<version>.zip, plus Plex Uno from
+the git checkout at PATH (its committed HEAD, not the working tree) into zips/. The repository add-on
+and Plex Uno are the same in every feed: their zips in zips/ are copied into the other feeds as they
+are. Then each feed's addons.xml and its .md5 are rewritten from every zip there - so older versions
+stay listed, and installable, until their zips are deleted.
 
 A version that's already published isn't rebuilt: if the add-on changed, its version has to be
 bumped first, or Kodi would never offer the change.
@@ -25,6 +31,11 @@ from xml.etree import ElementTree
 ROOT = os.path.dirname(os.path.abspath(__file__))
 ADDONS = os.path.join(ROOT, 'addons')
 ZIPS = os.path.join(ROOT, 'zips')
+# (source folder, zips folder) per feed; the first is Kodi 21's, and the one the shared add-ons are built in
+FEEDS = [(ADDONS, ZIPS),
+         (os.path.join(ROOT, 'piers', 'addons'), os.path.join(ROOT, 'piers', 'zips'))]
+# the same in every feed
+SHARED = ('repository.maybepanic', 'script.plexmod-uno')
 
 # never shipped, wherever they turn up
 SKIP_NAMES = {'.git', '.gitignore', '.gitattributes', '.github', '.idea', '.vscode', '__pycache__',
@@ -77,7 +88,7 @@ def addon_info(addon_xml):
     return root.get('id'), root.get('version')
 
 
-def build(files, require_id=None):
+def build(files, zips, require_id=None):
     files = sorted(files)
     addon_xml = dict(files).get('addon.xml')
     if addon_xml is None:
@@ -86,7 +97,7 @@ def build(files, require_id=None):
     if require_id and addon_id != require_id:
         # e.g. a commit from before the rename: published here, it would shadow the stock add-on
         raise SystemExit('  addon.xml says {}, not {}'.format(addon_id, require_id))
-    target = os.path.join(ZIPS, addon_id, '{}-{}.zip'.format(addon_id, version))
+    target = os.path.join(zips, addon_id, '{}-{}.zip'.format(addon_id, version))
 
     if os.path.exists(target):
         with zipfile.ZipFile(target) as z:
@@ -110,11 +121,32 @@ def version_key(version):
     return [(0, int(p), '') if p.isdigit() else (1, 0, p) for p in re.split(r'[.\-~+]', version)]
 
 
-def write_index():
-    """addons.xml and .md5 from every zip in zips/, plus each add-on's metadata beside its zips"""
+def mirror_shared(src, dst):
+    """copy the shared add-ons' zips from one feed's zips folder into another's"""
+    for addon_id in SHARED:
+        folder = os.path.join(src, addon_id)
+        for name in sorted(os.listdir(folder)):
+            if not name.endswith('.zip'):
+                continue
+            with open(os.path.join(folder, name), 'rb') as f:
+                data = f.read()
+            target = os.path.join(dst, addon_id, name)
+            if os.path.exists(target):
+                with open(target, 'rb') as f:
+                    if f.read() != data:
+                        raise SystemExit('  {} differs between {} and {}'.format(name, src, dst))
+                continue
+            os.makedirs(os.path.dirname(target), exist_ok=True)
+            with open(target, 'wb') as f:
+                f.write(data)
+            print('  {}: copied'.format(name))
+
+
+def write_index(zips):
+    """addons.xml and .md5 from every zip in a zips folder, plus each add-on's metadata beside its zips"""
     entries = []
-    for addon_id in sorted(os.listdir(ZIPS)):
-        folder = os.path.join(ZIPS, addon_id)
+    for addon_id in sorted(os.listdir(zips)):
+        folder = os.path.join(zips, addon_id)
         if not os.path.isdir(folder):
             continue
         versions = []
@@ -144,11 +176,11 @@ def write_index():
 
     text = '<?xml version="1.0" encoding="UTF-8"?>\n<addons>\n' + '\n\n'.join(entries) + '\n</addons>\n'
     data = text.encode('utf-8')
-    with open(os.path.join(ZIPS, 'addons.xml'), 'wb') as f:
+    with open(os.path.join(zips, 'addons.xml'), 'wb') as f:
         f.write(data)
-    with open(os.path.join(ZIPS, 'addons.xml.md5'), 'wb') as f:
+    with open(os.path.join(zips, 'addons.xml.md5'), 'wb') as f:
         f.write(hashlib.md5(data).hexdigest().encode('ascii'))
-    print('addons.xml: {} entries'.format(len(entries)))
+    print('{}: {} entries'.format(os.path.relpath(os.path.join(zips, 'addons.xml'), ROOT), len(entries)))
 
 
 REPO_ID = 'repository.maybepanic'
@@ -195,16 +227,22 @@ def main():
     parser.add_argument('--uno', metavar='PATH', help="Plex Uno's git checkout (script.plexmod-uno)")
     args = parser.parse_args()
 
-    os.makedirs(ZIPS, exist_ok=True)
-    for name in sorted(os.listdir(ADDONS)):
-        folder = os.path.join(ADDONS, name)
-        if os.path.isfile(os.path.join(folder, 'addon.xml')):
-            print(name)
-            build(folder_files(folder))
-    if args.uno:
-        print(os.path.basename(os.path.normpath(args.uno)))
-        build(git_files(args.uno), require_id='script.plexmod-uno')
-    write_index()
+    for i, (addons, zips) in enumerate(FEEDS):
+        print('== {}'.format(os.path.relpath(zips, ROOT)))
+        os.makedirs(zips, exist_ok=True)
+        for name in sorted(os.listdir(addons)):
+            folder = os.path.join(addons, name)
+            if os.path.isfile(os.path.join(folder, 'addon.xml')):
+                if i and name in SHARED:
+                    raise SystemExit('  {} is shared: its source belongs in {} only'.format(name, ADDONS))
+                print(name)
+                build(folder_files(folder), zips)
+        if i == 0 and args.uno:
+            print(os.path.basename(os.path.normpath(args.uno)))
+            build(git_files(args.uno), zips, require_id='script.plexmod-uno')
+        if i:
+            mirror_shared(ZIPS, zips)
+        write_index(zips)
     write_site()
 
 

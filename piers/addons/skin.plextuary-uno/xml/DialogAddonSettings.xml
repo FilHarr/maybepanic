@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>5</defaultcontrol>
+	<include>Animation_DialogPopupOpenClose</include>
+	<controls>
+		<control type="group">
+			<top>90</top>
+			<centerleft>50%</centerleft>
+			<width>1820</width>
+			<include>Animation_DialogPopupVisible</include>
+			<include content="DialogBackgroundCommons">
+				<param name="width" value="1820" />
+				<param name="height" value="900" />
+				<param name="header_label" value="" />
+				<param name="header_id" value="2" />
+			</include>
+			<control type="grouplist" id="3">
+				<description>Categories Area</description>
+				<left>10</left>
+				<top>80</top>
+				<width>420</width>
+				<height>650</height>
+				<itemgap>-20</itemgap>
+				<orientation>vertical</orientation>
+				<onleft>9000</onleft>
+				<onright>5</onright>
+				<onup condition="String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">Action(LastPage)</onup>
+				<onup condition="!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">20</onup>
+				<ondown condition="String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">Action(FirstPage)</ondown>
+				<ondown condition="!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)">20</ondown>
+			</control>
+			<control type="button" id="3588">
+				<left>199</left>
+				<top>714</top>
+				<width>32</width>
+				<height>16</height>
+				<hitrect x="191" y="710" w="48" h="24" />
+				<texturefocus colordiffuse="button_focus">overlays/arrowdown.png</texturefocus>
+				<texturenofocus colordiffuse="button_focus">overlays/arrowdown.png</texturenofocus>
+				<animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
+				<animation effect="zoom" start="100,0" end="100,100" delay="500" center="auto" time="200">WindowOpen</animation>
+				<animation effect="zoom" start="100,100" end="100,0" center="auto" time="200">WindowClose</animation>
+				<onclick>SetFocus(3)</onclick>
+				<onclick>PageDown</onclick>
+				<visible>Container(3).HasNext + Control.IsVisible(3)</visible>
+			</control>
+			<control type="button" id="3589">
+				<left>199</left>
+				<top>80</top>
+				<width>32</width>
+				<height>16</height>
+				<hitrect x="191" y="76" w="48" h="24" />
+				<texturefocus colordiffuse="button_focus" flipy="true">overlays/arrowdown.png</texturefocus>
+				<texturenofocus colordiffuse="button_focus" flipy="true">overlays/arrowdown.png</texturenofocus>
+				<animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
+				<animation effect="zoom" start="100,0" end="100,100" delay="500" center="auto" time="200">WindowOpen</animation>
+				<animation effect="zoom" start="100,100" end="100,0" center="auto" time="200">WindowClose</animation>
+				<onclick>SetFocus(3)</onclick>
+				<onclick>PageUp</onclick>
+				<visible>Container(3).HasPrevious + Control.IsVisible(3)</visible>
+			</control>
+			<control type="button" id="10">
+				<description>Default Category Button</description>
+				<height>110</height>
+				<width>410</width>
+				<textoffsetx>20</textoffsetx>
+				<align>center</align>
+				<aligny>center</aligny>
+				<wrapmultiline>true</wrapmultiline>
+				<font>font25_title</font>
+				<texturenofocus border="40">buttons/dialogbutton-nofo.png</texturenofocus>
+			</control>
+			<control type="image">
+				<left>410</left>
+				<top>80</top>
+				<width>1100</width>
+				<height>670</height>
+				<texture border="40">buttons/dialogbutton-nofo.png</texture>
+			</control>
+			<control type="grouplist" id="5">
+				<description>control area</description>
+				<left>429</left>
+				<top>100</top>
+				<width>1060</width>
+				<height>630</height>
+				<pagecontrol>60</pagecontrol>
+				<onleft>3</onleft>
+				<onright>9000</onright>
+				<onup>5</onup>
+				<ondown>5</ondown>
+			</control>
+			<control type="image">
+				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>429</left>
+				<top>740</top>
+				<width>1072</width>
+				<height>2</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="image">
+				<visible>String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>50</left>
+				<top>740</top>
+				<width>1451</width>
+				<height>2</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="textbox" id="6">
+				<description>description area</description>
+				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>450</left>
+				<top>750</top>
+				<right>330</right>
+				<height>140</height>
+				<font>font12</font>
+				<align>left</align>
+				<textcolor>button_focus</textcolor>
+				<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+			</control>
+			<control type="textbox">
+				<description>Game client description area</description>
+				<visible>Window.IsActive(addonsettings) + String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>50</left>
+				<top>750</top>
+				<right>330</right>
+				<height>140</height>
+				<font>font12</font>
+				<align>left</align>
+				<label>$INFO[Control.GetLabel(6)]</label>
+				<textcolor>button_focus</textcolor>
+				<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+			</control>
+			<control type="button" id="7">
+				<description>Default Button</description>
+				<include>DefaultSettingButton</include>
+			</control>
+			<control type="radiobutton" id="8">
+				<description>Default RadioButton</description>
+				<include>DefaultSettingButton</include>
+				<textwidth>880</textwidth>
+			</control>
+			<control type="spincontrolex" id="9">
+				<description>Default SpinControlex</description>
+				<include>DefaultSettingButton</include>
+			</control>
+			<control type="image" id="11">
+				<description>separator image</description>
+				<height>3</height>
+				<texture colordiffuse="AAAAAAAA" border="3">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="edit" id="12">
+				<include>DefaultSettingButton</include>
+			</control>
+			<control type="sliderex" id="13">
+				<description>Default Slider</description>
+				<include>DefaultSettingButton</include>
+				<textwidth>700</textwidth>
+			</control>
+			<control type="label" id="14">
+				<description>Default Label</description>
+				<include>DefaultSettingLabel</include>
+			</control>
+			<control type="colorbutton" id="15">
+				<description>Default ColorButton</description>
+				<include>DefaultSettingButton</include>
+			</control>
+			<control type="grouplist" id="9000">
+				<left>1510</left>
+				<top>92</top>
+				<orientation>vertical</orientation>
+				<width>300</width>
+				<height>300</height>
+				<itemgap>-10</itemgap>
+				<onleft>5</onleft>
+				<onright>3</onright>
+				<include content="DefaultDialogButton">
+					<param name="id" value="28" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="29" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="30" />
+					<param name="label" value="" />
+				</include>
+			</control>
+			<control type="group">
+				<description>Currently-playing emulator name and icon</description>
+				<visible>Player.HasGame + String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>1510</left>
+				<width>300</width>
+				<top>528</top>
+				<height>260</height>
+				<control type="label">
+					<description>Emulator name</description>
+					<height>30</height>
+					<font>font23_narrow</font>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>button_focus</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
+					<label>$INFO[Window(addonsettings).Property(GameClient.Name)]</label>
+				</control>
+				<control type="label">
+					<description>Emulator version</description>
+					<top>30</top>
+					<height>30</height>
+					<font>font23_narrow</font>
+					<textoffsetx>20</textoffsetx>
+					<textcolor>button_focus</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
+					<label>$INFO[Window(addonsettings).Property(Addon.Version)]</label>
+				</control>
+				<control type="image">
+					<description>Emulator icon</description>
+					<left>50</left>
+					<top>70</top>
+					<height>200</height>
+					<width>200</width>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[Window(addonsettings).Property(Addon.Icon)]</texture>
+				</control>
+			</control>
+			<control type="radiobutton" id="20">
+				<visible>!String.IsEqual(Window(addonsettings).Property(Addon.Type),kodi.gameclient)</visible>
+				<left>10</left>
+				<top>740</top>
+				<width>410</width>
+				<height>120</height>
+				<font>font25_title</font>
+				<aligny>center</aligny>
+				<onclick>SettingsLevelChange</onclick>
+				<textoffsetx>100</textoffsetx>
+				<textoffsety>0</textoffsety>
+				<texturenofocus />
+				<radioposx>40</radioposx>
+				<radioposy>0</radioposy>
+				<radiowidth>40</radiowidth>
+				<radioheight>40</radioheight>
+				<onleft>9000</onleft>
+				<onright>5</onright>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<textureradioonfocus>icons/settings.png</textureradioonfocus>
+				<textureradioonnofocus>icons/settings.png</textureradioonnofocus>
+				<textureradioofffocus>icons/settings.png</textureradioofffocus>
+				<textureradiooffnofocus>icons/settings.png</textureradiooffnofocus>
+			</control>
+			<control type="scrollbar" id="60">
+				<left>1489</left>
+				<top>100</top>
+				<width>12</width>
+				<height>630</height>
+				<orientation>vertical</orientation>
+				<onleft>5</onleft>
+				<onright>9000</onright>
+				<animation effect="fade" start="0" end="100" delay="300" time="320">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
+			</control>
+		</control>
+	</controls>
+</window>
