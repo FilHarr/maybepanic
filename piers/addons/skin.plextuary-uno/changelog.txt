@@ -1,3 +1,11 @@
+[B]22.0.1[/B]
+* From upstream 4.0.0-pm4k1.13: custom font and settings strings move from #32100-32111 into Kodi's skin string range (#31302-31313, as in Plextuary CE Custom Builds): Kodi 22 only loads skin strings from 31000-31999. The font names in Skin Settings and the backdrop-on-pause and exit-menu setting labels were blank on Kodi 22
+* From upstream: add the missing German labels
+
+[B]22.0.0[/B]
+* Kodi 22: Kodi 22's Estuary (4.1.0) with Plextuary's changes merged in
+* Fonts: the Default fontset's clock font (font_clock) pointed at Inter.ttf, which isn't bundled, so Kodi fell back to Arial; it's Inter-Regular.ttf now
+
 [B]0.8.5[/B]
 • Updated language files from Transifex
 

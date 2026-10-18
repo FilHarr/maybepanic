@@ -1,3 +1,12 @@
+[B]0.1.3[/B]
+* From upstream 4.0.0-pm4k1.15cpm.a14.29: PlayerProcessInfo adopts p3i.estuary 8.8.23's expanded layout, with separate decoder/deinterlacing and VS10/VP rows, and active-border offsets on supported builds
+* From upstream: show the active Dolby Vision module, stream layout, auto-letterbox state and player-led target luminance; DV/HDR details stay available during VS10 SDR conversion
+* From upstream: show Omniphony rendering, SOFA and config.yaml override details, object-audio layouts and more DTS/Auro-3D codec names, keeping the older audio-output fallbacks
+* From upstream: hide missing lowest-FPS units, and better subtitle and enhancement-layer details
+
+[B]0.1.2[/B]
+* Fonts: the Default fontset's clock font (font_clock) pointed at Inter.ttf, which isn't bundled, so Kodi fell back to Arial; it's Inter-Regular.ttf now
+
 [B]0.1.1[/B]
 * From upstream 4.0.0-pm4k1.15cpm.a14.26-a14.28: keep black-border detection startup progress visible during fullscreen playback and in the information view on supported p3i builds
 * From upstream: show VAR instead of IMAX when DV active-area detection cannot establish consistent framing

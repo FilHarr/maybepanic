@@ -1,3 +1,10 @@
+[B]0.1.2[/B]
+* From upstream 4.0.0-pm4k1.15ce: custom font and settings strings move from #32100-32111 into Kodi's skin string range (#31302-31313, as in Plextuary CE Custom Builds): Kodi 22 only loads skin strings from 31000-31999
+* From upstream: keep the Hungarian translations and add the missing German labels
+
+[B]0.1.1[/B]
+* Fonts: the Default fontset's clock font (font_clock) pointed at Inter.ttf, which isn't bundled, so Kodi fell back to Arial; it's Inter-Regular.ttf now
+
 [B]0.8.5[/B]
 • Updated language files from Transifex
 
