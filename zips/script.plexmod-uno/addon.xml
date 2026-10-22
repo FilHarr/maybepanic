@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.2.1"
+       version="0.3.0"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,15 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.3.0 - video player
+- Video player: a redesigned OSD, with chapters and the play queue as card rows
+- Video player: scan the timeline with FF/RW, or by holding left/right (Player UI setting)
+- Video player: preview thumbnails from the whole index file - no more green or black previews
+- TV spoilers: covers the hero, See more grids, playlists and search; hides previews instead of blurring them
+- Hub rows slide more smoothly; art loads over a plain card
+- Collections show how many items they hold
+- Fixed: auto-start with the stock PlexMod also installed
+
 0.2.1 - Kodi 22
 - Starts on Kodi 22 again
 - Replay after a single movie plays it again
