@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.3.0"
+       version="0.4.0"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,15 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.4.0 - pop-ups and settings
+- Settings open in the option picker beside the sidebar, with each row's help
+- Menus, pickers and confirmations share one style
+- Editions on the details line, and as titles of their own in search
+- Watchlist: a show stays on until it has ended and is fully watched
+- Watchlist button on single-season shows
+- Previews and chapter images keep the film's shape
+- CoreELEC p3i: Direct Stream and transcodes start without waiting on border detection
+
 0.3.0 - video player
 - Video player: a redesigned OSD, with chapters and the play queue as card rows
 - Video player: scan the timeline with FF/RW, or by holding left/right (Player UI setting)

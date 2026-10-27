@@ -47,6 +47,96 @@
 
 <addon id="script.plexmod-uno"
        name="Plex Uno"
+       version="0.4.0"
+       provider-name="pannal, FilHarr">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.27.1+matrix.1"/>
+        <import addon="script.module.six" version="1.15.0+matrix.1"/>
+        <import addon="script.module.kodi-six" version="0.1.3.1" />
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.python.pluginsource" library="plugin.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.ui.screensaver" library="screensaver.py"/>
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Plex Uno for Kodi</summary>
+        <summary lang="es_ES">Plex Uno para Kodi</summary>
+        <summary lang="de_DE">Plex Uno für Kodi</summary>
+        <description lang="en_GB">Unofficial Plex for Kodi add-on: a reworked fork of PlexMod that installs beside it</description>
+        <description lang="es_ES">Complemento no oficial de Plex para Kodi: una versión reelaborada de PlexMod que se instala junto a él</description>
+        <description lang="de_DE">Inoffizielles Plex-Add-on für Kodi: eine überarbeitete Abspaltung von PlexMod, die sich daneben installieren lässt</description>
+        <disclaimer lang="en">This add-on is not supported by Plex</disclaimer>
+        <disclaimer lang="es">Este add-on no está respaldado por Plex</disclaimer>
+        <disclaimer lang="de">Dieses Addon wird nicht von der Firma Plex Inc. unterstützt</disclaimer>
+
+        <license>GPL-2.0-only</license>
+        <website>https://www.plex.tv</website>
+        <source>https://github.com/FilHarr/plex-for-kodi</source>
+        <platform>all</platform>
+        <news>
+0.4.0 - pop-ups and settings
+- Settings open in the option picker beside the sidebar, with each row's help
+- Menus, pickers and confirmations share one style
+- Editions on the details line, and as titles of their own in search
+- Watchlist: a show stays on until it has ended and is fully watched
+- Watchlist button on single-season shows
+- Previews and chapter images keep the film's shape
+- CoreELEC p3i: Direct Stream and transcodes start without waiting on border detection
+
+0.3.0 - video player
+- Video player: a redesigned OSD, with chapters and the play queue as card rows
+- Video player: scan the timeline with FF/RW, or by holding left/right (Player UI setting)
+- Video player: preview thumbnails from the whole index file - no more green or black previews
+- TV spoilers: covers the hero, See more grids, playlists and search; hides previews instead of blurring them
+- Hub rows slide more smoothly; art loads over a plain card
+- Collections show how many items they hold
+- Fixed: auto-start with the stock PlexMod also installed
+
+0.2.1 - Kodi 22
+- Starts on Kodi 22 again
+- Replay after a single movie plays it again
+- Home and Recommended: a show without a clearlogo keeps its name over the episode
+
+0.2.0 - settings
+- Settings reorganised: Playback and Playback (advanced); per-user settings marked
+- More settings apply as soon as Settings closes; ones that did nothing are gone
+- plex.direct mapping and the path-mapping share check work again
+- Rows, grids and Continue Watching update after playback, with current progress and art
+- Skipping the final credits goes to post-play
+- Slimmer progress bars on tiles
+
+0.1.1 - refreshing
+- Refresh Hubs is on every row item's menu and refreshes the rows in place
+- Rows update in place after Remove from Continue Watching and Mark Played
+- Episodes and Seasons update after playback and after the screensaver or sleep
+- New episodes show up without leaving the screen
+- Single-season shows pick up what was watched
+
+0.1.0 - first Plex Uno build, based on PlexMod 1.14.1. Installs beside the stock add-on.
+- A sidebar replaces the top bar: Home, Search, Watchlist, Playlists and your libraries from any server
+- Libraries: Recommended, Library, Categories and Collections tabs
+- Home: hub rows from every server with hero art; Manage Hubs and a Libraries picker
+- Show, Episodes, Pre-play, Artist, Album, Person, Collections and Playlists screens rebuilt
+- Search across every server, as a sidebar screen
+- Music plays through Plex play queues, with a rebuilt player
+- Multiple servers: offline, back online and gone servers handled
+- Mouse and touch input ignored by default (Settings, System)
+- Needs the Plextuary Uno skin, offered at startup
+        </news>
+        <assets>
+            <icon>icon2.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+    </extension>
+</addon>
+
+<addon id="script.plexmod-uno"
+       name="Plex Uno"
        version="0.3.0"
        provider-name="pannal, FilHarr">
     <requires>
