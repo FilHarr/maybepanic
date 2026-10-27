@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.4.0"
+       version="0.4.1"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,11 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.4.1 - pop-ups on CoreELEC
+- Pop-ups no longer stay on screen after Back on CoreELEC p3i builds
+- Questions and follow-ups open over the menu that asked them
+- Fixed: menu fonts and sidebar labels changing under a pop-up
+
 0.4.0 - pop-ups and settings
 - Settings open in the option picker beside the sidebar, with each row's help
 - Menus, pickers and confirmations share one style
