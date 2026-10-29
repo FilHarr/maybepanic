@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.4.1"
+       version="0.4.2"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,15 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.4.2 - library grids
+- Grids load the tiles around you first, across pages, and the next page before you reach it
+- Pages load in about half the time, and big libraries open faster
+- Smoother with a 4K interface
+- The library page-size settings are gone; Slow connection fetches further ahead
+- The photo viewer on the plain background
+- Fixed: Resolution and Bitrate captions on films with more than one copy
+- Fixed: Plex Uno running twice when launched while it was starting
+
 0.4.1 - pop-ups on CoreELEC
 - Pop-ups no longer stay on screen after Back on CoreELEC p3i builds
 - Questions and follow-ups open over the menu that asked them
