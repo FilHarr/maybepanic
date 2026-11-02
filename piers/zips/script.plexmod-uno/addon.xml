@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.4.2"
+       version="0.4.3"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,12 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.4.3 - background updates
+- A background update no longer ends the session: Plex Uno carries on and asks when to restart
+- Recommended rows appear in about half the time
+- Fixed: the first tile of a row losing its shadow when the row wasn't focused
+- Fixed: OK ending a seek into the credits skipped them
+
 0.4.2 - library grids
 - Grids load the tiles around you first, across pages, and the next page before you reach it
 - Pages load in about half the time, and big libraries open faster
