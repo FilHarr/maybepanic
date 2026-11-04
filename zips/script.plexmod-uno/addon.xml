@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.plexmod-uno"
        name="Plex Uno"
-       version="0.4.3"
+       version="0.4.4"
        provider-name="pannal, FilHarr">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
@@ -33,6 +33,11 @@
         <source>https://github.com/FilHarr/plex-for-kodi</source>
         <platform>all</platform>
         <news>
+0.4.4 - a new background
+- The background in the style of Plex's own apps: one smooth colour gradient, with the art larger and at full strength at the top right
+- Offline at start-up: Plex Uno asks plex.tv again by itself, and the Watchlist comes back when it answers
+- Fixed: theme music stopping could leave a screen stuck
+
 0.4.3 - background updates
 - A background update no longer ends the session: Plex Uno carries on and asks when to restart
 - Recommended rows appear in about half the time
